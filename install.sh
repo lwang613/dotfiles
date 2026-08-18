@@ -3,7 +3,7 @@
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Array of dotfiles to link
-files=(".zshrc" ".tmux.conf" ".gitconfig" ".gitignore_global")
+files=(".zshrc" ".tmux.conf" ".gitconfig" ".gitignore_global" ".vimrc")
 
 echo "Setting up dotfiles symlinks..."
 
