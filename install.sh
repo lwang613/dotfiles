@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
 
-DOTFILES_DIR="$HOME/dotfiles"
+DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Array of dotfiles to link
-files=(".zshrc" ".tmux.conf" ".gitconfig")
+files=(".zshrc" ".tmux.conf" ".gitconfig" ".gitignore_global")
 
 echo "Setting up dotfiles symlinks..."
 
 for file in "${files[@]}"; do
     if [ -f "$DOTFILES_DIR/$file" ]; then
-        # Force symlink creation (-sf overwrites existing files/links)
         ln -sf "$DOTFILES_DIR/$file" "$HOME/$file"
         echo "Linked: $file -> $HOME/$file"
     else

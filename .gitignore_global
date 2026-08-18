@@ -1,0 +1,58 @@
+# ==============================================================================
+# GLOBAL GITIGNORE — applies to every repo on this machine
+# Scope: machine and editor noise only. Project outputs and genomic data belong
+# in each repo's own committed .gitignore, so the rules travel with the code.
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# macOS
+# ------------------------------------------------------------------------------
+# Finder metadata; created in any directory you open in Finder
+.DS_Store
+.DS_Store?
+# Thumbnail and resource-fork stubs written to non-native filesystems
+._*
+.Spotlight-V100
+.Trashes
+
+# ------------------------------------------------------------------------------
+# Editors
+# ------------------------------------------------------------------------------
+# vim swap and backup files, left behind by crashed or killed sessions
+*.swp
+*.swo
+*~
+# VS Code and JetBrains workspace settings; personal window layout, not project config
+.vscode/
+.idea/
+
+# ------------------------------------------------------------------------------
+# R
+# ------------------------------------------------------------------------------
+# Console history and RStudio session state; yours alone, and can leak object names
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# ------------------------------------------------------------------------------
+# Python
+# ------------------------------------------------------------------------------
+# Compiled bytecode; regenerated automatically, never worth versioning
+__pycache__/
+*.py[cod]
+# Jupyter autosaves; contain full copies of notebook output including data previews
+.ipynb_checkpoints/
+# Local virtualenvs
+.venv/
+venv/
+
+# ------------------------------------------------------------------------------
+# Credentials — highest-consequence lines in this file
+# ------------------------------------------------------------------------------
+# API keys, tokens, database URLs
+.env
+.env.local
+# SSH and cloud credentials, in case one ever lands inside a repo directory
+*.pem
+*.key

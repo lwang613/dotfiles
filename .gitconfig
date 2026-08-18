@@ -1,0 +1,100 @@
+# ==============================================================================
+# IDENTITY — stamped on every commit; wrong values are painful to fix later
+# ==============================================================================
+[user]
+    # Author name on all commits
+    name = lwang613
+    # GitHub noreply address; keeps your real email out of public commit logs forever
+    email = 159482267+lwang613@users.noreply.github.com
+
+# ==============================================================================
+# NEW REPOS
+# ==============================================================================
+[init]
+    # 'main' matches GitHub's default, so local and remote branch names never diverge
+    defaultBranch = main
+
+# ==============================================================================
+# ENVIRONMENT
+# ==============================================================================
+[core]
+    # Editor git opens for commit messages and interactive rebases
+    editor = nano
+    # Global ignore list; catches data files before you can stage them in any repo
+	excludesfile = /Users/lucaswang/.gitignore_global
+    # Strips Windows CR-LF on commit; prevents "bad interpreter: ^M" errors in shell scripts
+    autocrlf = input
+    # -F quit if output fits one screen, -R keep colors, -X leave output visible after quit
+    pager = less -FRX
+
+# ==============================================================================
+# PULL — the setting that prevents accidental merge commits
+# ==============================================================================
+[pull]
+    # Refuses to pull when your branch has diverged; forces you to choose merge or rebase
+    # explicitly instead of silently creating "Merge branch 'main' of github.com..." noise
+    ff = only
+
+# ==============================================================================
+# PUSH
+# ==============================================================================
+[push]
+    # Creates the upstream link on first push; no more 'git push -u origin <branch>'
+    autoSetupRemote = true
+    # Pushes only the branch you're on, to a same-named branch on origin
+    default = current
+    # Sends annotated tags along with commits; keeps pipeline version tags from being
+    # stranded locally when you tag an analysis and forget 'git push --tags'
+    followTags = true
+
+# ==============================================================================
+# FETCH
+# ==============================================================================
+[fetch]
+    # Deletes local refs to branches already removed on the remote; stops 'git br'
+    # from filling up with dead branches over the course of a project
+    prune = true
+
+# ==============================================================================
+# DIFF
+# ==============================================================================
+[diff]
+    # Histogram algorithm; produces far cleaner diffs than default Myers when code
+    # blocks are moved or reordered, which is constant in pipeline refactoring
+    algorithm = histogram
+    # Detects copied files as well as renamed ones; useful when you fork script 03
+    # into script 04 and want git to show it as a copy rather than a wall of new lines
+    renames = copies
+
+# ==============================================================================
+# MERGE
+# ==============================================================================
+[merge]
+    # zdiff3 shows the common ancestor's version inside conflict markers alongside
+    # yours and theirs, so you can see what each side actually changed. Note the key
+    # lives under [merge], not [diff] — under [diff] it silently does nothing
+    conflictStyle = zdiff3
+
+# ==============================================================================
+# ALIASES
+# ==============================================================================
+[alias]
+    # Short status: one line per changed file instead of git's verbose default
+    st = status -s
+    # Switch branches
+    co = checkout
+    # Create a branch and switch to it in one step
+    cb = checkout -b
+    # List local branches with each one's latest commit SHA and subject
+    br = branch -v
+    # Commit with an inline message
+    cm = commit -m
+    # Fold staged changes into the previous commit, keeping its message unchanged;
+    # the fix for "committed, then noticed a typo" without a second junk commit
+    amend = commit --amend --no-edit
+    # Undo the last commit but leave all your changes staged in the working directory
+    undo = reset --soft HEAD~1
+    # Lines added/removed per file; run before committing to catch accidental bulk edits
+    changes = diff --stat
+    # ASCII commit graph across all branches, one line each, with tags and branch labels
+    lg = log --graph --all --oneline --decorate
