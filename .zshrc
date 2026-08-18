@@ -50,10 +50,6 @@ fi
 unset __mamba_setup
 # <<< mamba initialize <<<
 
-# FZF (Fuzzy Finder): Loads zsh keybindings (Ctrl+T, Ctrl+R, Alt+C) and auto-completion.
-# Process substitution <(...) executes 'fzf --zsh' dynamically without temporary files.
-source <(fzf --zsh)
-
 # GitHub Copilot CLI: Evaluates shell integration code to enable 'gh copilot' aliases
 # (e.g., 'ghcs' for shell command suggestions, 'ghce' for git explanation).
 alias copilot="gh copilot"
@@ -78,3 +74,10 @@ alias ta="tmux attach -t"
 alias tls="tmux ls"
 alias tn="tmux new -s"
 PROMPT="%F{green}%n@%m%f:%F{cyan}%~%f$ "
+
+source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+# Re-apply fzf bindings AFTER zsh-vi-mode initializes
+function zvm_after_init() {
+  source <(fzf --zsh)
+}
