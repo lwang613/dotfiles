@@ -14,6 +14,7 @@ set ruler                  " Show cursor position in the corner
 set laststatus=2           " Always show the status bar, even with one file open
 set scrolloff=3            " Keep 3 lines of context above/below cursor
 set termguicolors          " 24-bit color — remove if using Apple Terminal.app
+set number relativenumber  " Show relative line numbers for jump motions
 
 " ------------------------------------------------------------------------------
 " Indentation
