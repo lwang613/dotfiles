@@ -3,9 +3,9 @@
 # ==============================================================================
 [user]
     # Author name on all commits
-    name = lwang613
+	name = Lucas Wang
     # GitHub noreply address; keeps your real email out of public commit logs forever
-    email = 159482267+lwang613@users.noreply.github.com
+	email = ID+lwang613@users.noreply.github.com
 
 # ==============================================================================
 # NEW REPOS

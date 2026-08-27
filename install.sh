@@ -16,4 +16,24 @@ for file in "${files[@]}"; do
     fi
 done
 
+# Ensure target directories exist
+mkdir -p "$HOME/.copilot"
+mkdir -p "$HOME/MD_PhD/phd_notes"
+
+# Link global Copilot instructions
+if [ -f "$DOTFILES_DIR/agent-config/copilot-instructions.md" ]; then
+    ln -sfn "$DOTFILES_DIR/agent-config/copilot-instructions.md" "$HOME/.copilot/copilot-instructions.md"
+    echo "Linked: copilot-instructions.md -> $HOME/.copilot/copilot-instructions.md"
+else
+    echo "Warning: agent-config/copilot-instructions.md not found"
+fi
+
+# Link project-specific CLAUDE.md
+if [ -f "$DOTFILES_DIR/agent-config/CLAUDE.md" ]; then
+    ln -sfn "$DOTFILES_DIR/agent-config/CLAUDE.md" "$HOME/MD_PhD/phd_notes/CLAUDE.md"
+    echo "Linked: CLAUDE.md -> $HOME/MD_PhD/phd_notes/CLAUDE.md"
+else
+    echo "Warning: agent-config/CLAUDE.md not found"
+fi
+
 echo "Installation complete!"
