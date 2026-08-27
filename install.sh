@@ -20,7 +20,15 @@ done
 mkdir -p "$HOME/.copilot"
 mkdir -p "$HOME/MD_PhD/phd_notes"
 
-# Link global Copilot instructions
+# Link global Claude instructions (~/.claude/CLAUDE.md)
+if [ -f "$DOTFILES_DIR/agent-config/CLAUDE.md" ]; then
+    ln -sfn "$DOTFILES_DIR/agent-config/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+    echo "Linked: CLAUDE.md -> $HOME/.claude/CLAUDE.md"
+else
+    echo "Warning: agent-config/CLAUDE.md not found"
+fi
+
+# Link global Copilot instructions (~/.copilot/copilot-instructions.md)
 if [ -f "$DOTFILES_DIR/agent-config/copilot-instructions.md" ]; then
     ln -sfn "$DOTFILES_DIR/agent-config/copilot-instructions.md" "$HOME/.copilot/copilot-instructions.md"
     echo "Linked: copilot-instructions.md -> $HOME/.copilot/copilot-instructions.md"
@@ -28,12 +36,10 @@ else
     echo "Warning: agent-config/copilot-instructions.md not found"
 fi
 
-# Link project-specific CLAUDE.md
-if [ -f "$DOTFILES_DIR/agent-config/CLAUDE.md" ]; then
-    ln -sfn "$DOTFILES_DIR/agent-config/CLAUDE.md" "$HOME/MD_PhD/phd_notes/CLAUDE.md"
-    echo "Linked: CLAUDE.md -> $HOME/MD_PhD/phd_notes/CLAUDE.md"
-else
-    echo "Warning: agent-config/CLAUDE.md not found"
+# Link global Codex instructions (~/.codex/AGENTS.md)
+if [ -f "$DOTFILES_DIR/agent-config/AGENTS.md" ]; then
+    ln -sfn "$DOTFILES_DIR/agent-config/AGENTS.md" "$HOME/.codex/AGENTS.md"
+    echo "Linked: AGENTS.md -> $HOME/.codex/AGENTS.md"
 fi
 
 echo "Installation complete!"
